@@ -103,6 +103,114 @@ public class CardOrderTest {
 
     }
 
+    @Test
+    public void shouldSendNameByOneLetter(){
+        driver.get("http://localhost:9999/");
+        driver.findElement(By.cssSelector("[type='text']")).sendKeys("В И");
+        driver.findElement(By.cssSelector("[type='tel']")).sendKeys("+79811440000");
+        driver.findElement(By.className("checkbox__box")).click(); //ставим галочку что с условиями согласен
+        driver.findElement(By.tagName("button")).click(); //нажал на кнопку "отправить"
+        String text = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText().trim(); //проверка какой текст возвращается после отправки формы
+        String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
+        assertEquals(expected, text);
+    }
+
+    @Test
+    public void shouldSendJustName(){
+        driver.get("http://localhost:9999/");
+        driver.findElement(By.cssSelector("[type='text']")).sendKeys("Владимир");
+        driver.findElement(By.cssSelector("[type='tel']")).sendKeys("+79811440000");
+        driver.findElement(By.className("checkbox__box")).click(); //ставим галочку что с условиями согласен
+        driver.findElement(By.tagName("button")).click(); //нажал на кнопку "отправить"
+        String text = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText().trim(); //проверка какой текст возвращается после отправки формы
+        String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
+        assertEquals(expected, text);
+    }
+
+    @Test
+    public void shouldSendDoubleName(){
+        driver.get("http://localhost:9999/");
+        driver.findElement(By.cssSelector("[type='text']")).sendKeys("Софья-Мария Иванова");
+        driver.findElement(By.cssSelector("[type='tel']")).sendKeys("+79811440000");
+        driver.findElement(By.className("checkbox__box")).click(); //ставим галочку что с условиями согласен
+        driver.findElement(By.tagName("button")).click(); //нажал на кнопку "отправить"
+        String text = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText().trim(); //проверка какой текст возвращается после отправки формы
+        String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
+        assertEquals(expected, text);
+    }
+
+    @Test
+    public void shouldSendDoubleSurname(){
+        driver.get("http://localhost:9999/");
+        driver.findElement(By.cssSelector("[type='text']")).sendKeys("Анна Петрова-Водкина");
+        driver.findElement(By.cssSelector("[type='tel']")).sendKeys("+79811440000");
+        driver.findElement(By.className("checkbox__box")).click(); //ставим галочку что с условиями согласен
+        driver.findElement(By.tagName("button")).click(); //нажал на кнопку "отправить"
+        String text = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText().trim(); //проверка какой текст возвращается после отправки формы
+        String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
+        assertEquals(expected, text);
+    }
+
+    @Test
+    public void shouldSendDoubleNameAndSurname(){
+        driver.get("http://localhost:9999/");
+        driver.findElement(By.cssSelector("[type='text']")).sendKeys("Анна-София Петрова-Водкина");
+        driver.findElement(By.cssSelector("[type='tel']")).sendKeys("+79811440000");
+        driver.findElement(By.className("checkbox__box")).click(); //ставим галочку что с условиями согласен
+        driver.findElement(By.tagName("button")).click(); //нажал на кнопку "отправить"
+        String text = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText().trim(); //проверка какой текст возвращается после отправки формы
+        String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
+        assertEquals(expected, text);
+    }
+
+    @Test
+    public void shouldSendPhoneWhichStartsWith8(){
+        driver.get("http://localhost:9999/");
+        driver.findElement(By.cssSelector("[type='text']")).sendKeys("Вл Ив");
+        driver.findElement(By.cssSelector("[type='tel']")).sendKeys("+89811440000");
+        driver.findElement(By.className("checkbox__box")).click(); //ставим галочку что с условиями согласен
+        driver.findElement(By.tagName("button")).click(); //нажал на кнопку "отправить"
+        String text = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText().trim(); //проверка какой текст возвращается после отправки формы
+        String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
+        assertEquals(expected, text);
+    }
+
+    @Test
+    public void shouldSendPhoneWhichStartsWith9(){
+        driver.get("http://localhost:9999/");
+        driver.findElement(By.cssSelector("[type='text']")).sendKeys("Вл Ив");
+        driver.findElement(By.cssSelector("[type='tel']")).sendKeys("+99811440000");
+        driver.findElement(By.className("checkbox__box")).click(); //ставим галочку что с условиями согласен
+        driver.findElement(By.tagName("button")).click(); //нажал на кнопку "отправить"
+        String text = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText().trim(); //проверка какой текст возвращается после отправки формы
+        String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
+        assertEquals(expected, text);
+    }
+
+    @Test
+    public void shouldSendPhoneWhichStartsWith3(){
+        driver.get("http://localhost:9999/");
+        driver.findElement(By.cssSelector("[type='text']")).sendKeys("Вл Ив");
+        driver.findElement(By.cssSelector("[type='tel']")).sendKeys("+39811440000");
+        driver.findElement(By.className("checkbox__box")).click(); //ставим галочку что с условиями согласен
+        driver.findElement(By.tagName("button")).click(); //нажал на кнопку "отправить"
+        String text = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText().trim(); //проверка какой текст возвращается после отправки формы
+        String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
+        assertEquals(expected, text);
+    }
+
+    @Test
+    public void shouldSendPhoneWhichStartsWith0(){
+        driver.get("http://localhost:9999/");
+        driver.findElement(By.cssSelector("[type='text']")).sendKeys("Вл Ив");
+        driver.findElement(By.cssSelector("[type='tel']")).sendKeys("+09811440000");
+        driver.findElement(By.className("checkbox__box")).click(); //ставим галочку что с условиями согласен
+        driver.findElement(By.tagName("button")).click(); //нажал на кнопку "отправить"
+        String text = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText().trim(); //проверка какой текст возвращается после отправки формы
+        String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
+        assertEquals(expected, text);
+    }
+
     }
 
 
